@@ -1,8 +1,5 @@
 import React from 'react';
-
-function removeNumber(number: number, array: number[]): number[] {
-  return array.filter((num: number) => num !== number);
-}
+import { removeNumber } from '../../utils';
 
 export default function DisplayNumbers({
   remainingNumbers,
