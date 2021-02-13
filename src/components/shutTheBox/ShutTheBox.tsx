@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
 import initialGame from './gameHelpers';
@@ -13,6 +14,16 @@ export default function ShutTheBox(): JSX.Element {
     setRemainingBlocks(initialGame);
   }
 
+  useEffect(() => {
+    console.log(remainingBlocks);
+  }, [remainingBlocks]);
+  // useEffect that rerenders when ever remainingBlocks is changed
+  // check if playedBlocks adds to the sum of dice array
+  //    if yes, let the player roll again
+  //        let player roll again and check if the game is over then
+  //        if game is over update state and display play again on the screen
+  //    if no, the player needs to put another block down;
+  // console.log(remainingBlocks);
   return (
     <>
       <header>

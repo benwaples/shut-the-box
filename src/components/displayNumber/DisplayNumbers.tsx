@@ -1,20 +1,20 @@
 import React from 'react';
 import { RemainingBlocksType } from '../../types';
-import { playBlock, removeNumber } from '../../utils';
+import { playBlock } from '../../utils';
 
 export default function DisplayNumbers({
   remainingBlocks,
-}: // setRemainingBlocks,
-{
+  setRemainingBlocks,
+}: {
   remainingBlocks: RemainingBlocksType[];
-  // setRemainingBlocks: (numbers: number[]) => void;
+  setRemainingBlocks: (blocks: RemainingBlocksType[]) => void;
 }): JSX.Element {
   // map over remainingBlocks and make block elements :)
   const blockElements = remainingBlocks.map(
     ({ number, isPlayed }: RemainingBlocksType) => (
       <div className={isPlayed ? 'played-block' : 'default'}>
         <button
-          onClick={() => playBlock(remainingBlocks, number)}
+          onClick={() => setRemainingBlocks(playBlock(remainingBlocks, number))}
           type="button"
         >
           {number}
