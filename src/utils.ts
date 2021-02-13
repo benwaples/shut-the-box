@@ -1,19 +1,21 @@
-export function removeNumber(number: number, array: number[]): number[] {
-  return array.filter((num: number) => num !== number);
+import { RemainingBlocksType } from './types';
+
+export function removeNumber(
+  n: number,
+  array: RemainingBlocksType[]
+): RemainingBlocksType[] {
+  return array.filter(({ number }: RemainingBlocksType) => number !== n);
 }
 
-// export function isGameOver(
-//   diceArray: number[],
-//   remainingNumbers: number[]
-// ): boolean {
-//   const diceSum = diceArray[0] + diceArray[1];
-//   const gameIsOver = false;
-
-//   for (let i = 0; i < remainingNumbers.length - 1; i += 1) {
-//     const sum = i + remainingNumbers[i + 1];
-//   }
-//   return gameIsOver;
-// }
+export function playBlock(blockList: RemainingBlocksType[], n: number): void {
+  const block = blockList.find(
+    ({ number }: RemainingBlocksType) => number === n
+  );
+  // if block exists then toggle it to true.. this is more for TS lol
+  if (block) {
+    block.isPlayed = true;
+  }
+}
 
 export function isGameOver(
   numbers: number[],

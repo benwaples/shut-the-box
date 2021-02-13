@@ -1,30 +1,31 @@
 import React from 'react';
-import { removeNumber } from '../../utils';
+import { RemainingBlocksType } from '../../types';
+import { playBlock, removeNumber } from '../../utils';
 
 export default function DisplayNumbers({
-  remainingNumbers,
-  setRemainingNumbers,
-}: {
-  remainingNumbers: number[];
-  setRemainingNumbers: (numbers: number[]) => void;
+  remainingBlocks,
+}: // setRemainingBlocks,
+{
+  remainingBlocks: RemainingBlocksType[];
+  // setRemainingBlocks: (numbers: number[]) => void;
 }): JSX.Element {
-  // change these to radio buttons in a form
-  // undisable the button when a block has been clicked.
-  // when dice button has been clicked, redisplay the blocks
-  const numberBlockElements = remainingNumbers.map(
-    (number: number): JSX.Element => (
-      <>
-        <label htmlFor={`${number}`}>{number}</label>
-        <input
-          id={`${number}`}
-          value={`${number}`}
-          name="block"
-          onClick={() =>
-            setRemainingNumbers(removeNumber(number, remainingNumbers))
-          }
-        />
-      </>
+  // map over remainingBlocks and make block elements :)
+  const blockElements = remainingBlocks.map(
+    ({ number, isPlayed }: RemainingBlocksType) => (
+      <div className={isPlayed ? 'played-block' : 'default'}>
+        <button
+          onClick={() => playBlock(remainingBlocks, number)}
+          type="button"
+        >
+          {number}
+        </button>
+      </div>
     )
   );
-  return <div>{numberBlockElements}</div>;
+
+  // check to see if game is over
+  // check to see if player needs to roll again
+  // if neither then let them click another block
+
+  return <div>{blockElements}</div>;
 }
