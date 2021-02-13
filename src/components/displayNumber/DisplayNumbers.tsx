@@ -12,7 +12,7 @@ export default function DisplayNumbers({
   // map over remainingBlocks and make block elements :)
   const blockElements = remainingBlocks.map(
     ({ number, isPlayed }: RemainingBlocksType) => (
-      <div className={isPlayed ? 'played-block' : 'default'}>
+      <div key={number} className={isPlayed ? 'played-block' : 'default'}>
         <button
           onClick={() => setRemainingBlocks(playBlock(remainingBlocks, number))}
           type="button"

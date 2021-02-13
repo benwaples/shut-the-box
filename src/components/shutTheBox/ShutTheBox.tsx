@@ -14,10 +14,10 @@ export default function ShutTheBox(): JSX.Element {
     setRemainingBlocks(initialGame);
   }
 
+  // useEffect that rerenders when ever remainingBlocks is changed
   useEffect(() => {
     console.log(remainingBlocks);
   }, [remainingBlocks]);
-  // useEffect that rerenders when ever remainingBlocks is changed
   // check if playedBlocks adds to the sum of dice array
   //    if yes, let the player roll again
   //        let player roll again and check if the game is over then
