@@ -1,28 +1,31 @@
 import React from 'react';
-
-function removeNumber(number: number, array: number[]): number[] {
-  return array.filter((num: number) => num !== number);
-}
+import { RemainingBlocksType } from '../../types';
+import { playBlock, removeNumber } from '../../utils';
 
 export default function DisplayNumbers({
-  remainingNumbers,
-  setRemainingNumbers,
-}: {
-  remainingNumbers: number[];
-  setRemainingNumbers: (numbers: number[]) => void;
+  remainingBlocks,
+}: // setRemainingBlocks,
+{
+  remainingBlocks: RemainingBlocksType[];
+  // setRemainingBlocks: (numbers: number[]) => void;
 }): JSX.Element {
-  const numberBlockElements = remainingNumbers.map((number: number) => (
-    <li>
-      <button
-        key={number}
-        onClick={() =>
-          setRemainingNumbers(removeNumber(number, remainingNumbers))
-        }
-        type="button"
-      >
-        {number}
-      </button>
-    </li>
-  ));
-  return <ul>{numberBlockElements}</ul>;
+  // map over remainingBlocks and make block elements :)
+  const blockElements = remainingBlocks.map(
+    ({ number, isPlayed }: RemainingBlocksType) => (
+      <div className={isPlayed ? 'played-block' : 'default'}>
+        <button
+          onClick={() => playBlock(remainingBlocks, number)}
+          type="button"
+        >
+          {number}
+        </button>
+      </div>
+    )
+  );
+
+  // check to see if game is over
+  // check to see if player needs to roll again
+  // if neither then let them click another block
+
+  return <div>{blockElements}</div>;
 }

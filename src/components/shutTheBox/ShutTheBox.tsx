@@ -1,22 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
+// import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
-
-const initialGame = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+import initialGame from './gameHelpers';
 
 export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>([1, 1]);
-  const [remainingNumbers, setRemainingNumbers] = useState<number[]>(
-    initialGame
-  );
+  const [remainingBlocks, setRemainingBlocks] = useState(initialGame);
 
   function handleRestart() {
     setDiceArray([1, 1]);
-    setRemainingNumbers(initialGame);
-  }
-
-  if (!remainingNumbers.includes(diceArray[0] + diceArray[1])) {
-    return <h1>You lose</h1>;
+    setRemainingBlocks(initialGame);
   }
 
   return (
@@ -27,7 +21,7 @@ export default function ShutTheBox(): JSX.Element {
       <main>
         <section>
           <h1>game Board</h1>
-          <DisplayNumbers {...{ remainingNumbers, setRemainingNumbers }} />
+          <DisplayNumbers {...{ remainingBlocks, setRemainingBlocks }} />
         </section>
         <section>
           <h3>
