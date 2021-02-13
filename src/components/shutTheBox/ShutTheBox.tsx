@@ -27,7 +27,9 @@ export default function ShutTheBox(): JSX.Element {
     },
     0
   );
-  console.log(playedBlocks);
+  const diceSum = diceArray[0] + diceArray[1];
+  if (playedBlocks === diceSum) console.log('done');
+
   //    if yes, let the player roll again
   //        let player roll again and check if the game is over then
   //        if game is over update state and display play again on the screen
