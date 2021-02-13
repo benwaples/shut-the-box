@@ -28,10 +28,11 @@ export default function ShutTheBox(): JSX.Element {
     0
   );
   const diceSum = diceArray[0] + diceArray[1];
-  if (playedBlocks === diceSum) console.log('done');
 
   //    if yes, let the player roll again
-  //        let player roll again and check if the game is over then
+  //        let player roll again via terinary in JSX
+  //        and check if the game is over then
+
   //        if game is over update state and display play again on the screen
   //    if no, the player needs to put another block down;
   // console.log(remainingBlocks);
@@ -49,17 +50,19 @@ export default function ShutTheBox(): JSX.Element {
           <h3>
             {diceArray[0]}, {diceArray[1]}
           </h3>
-          <button
-            onClick={() =>
-              setDiceArray([
-                Math.ceil(Math.random() * 6),
-                Math.ceil(Math.random() * 6),
-              ])
-            }
-            type="button"
-          >
-            Roll Dice
-          </button>
+          {diceSum === playedBlocks && (
+            <button
+              onClick={() =>
+                setDiceArray([
+                  Math.ceil(Math.random() * 6),
+                  Math.ceil(Math.random() * 6),
+                ])
+              }
+              type="button"
+            >
+              Roll Dice
+            </button>
+          )}
           {gameOver && (
             <button type="button" onClick={handleRestart}>
               Restart
