@@ -18,6 +18,7 @@ export default function ShutTheBox(): JSX.Element {
 
   // extract this into function
   console.log(isGameOver(remainingNumbers, diceArray[0] + diceArray[1]));
+
   if (isGameOver(remainingNumbers, diceArray[0] + diceArray[1])) {
     return <h1>You lose</h1>;
   }

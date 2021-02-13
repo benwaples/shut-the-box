@@ -8,18 +8,23 @@ export default function DisplayNumbers({
   remainingNumbers: number[];
   setRemainingNumbers: (numbers: number[]) => void;
 }): JSX.Element {
-  const numberBlockElements = remainingNumbers.map((number: number) => (
-    <li>
-      <button
-        key={number}
-        onClick={() =>
-          setRemainingNumbers(removeNumber(number, remainingNumbers))
-        }
-        type="button"
-      >
-        {number}
-      </button>
-    </li>
-  ));
-  return <ul>{numberBlockElements}</ul>;
+  // change these to radio buttons in a form
+  // undisable the button when a block has been clicked.
+  // when dice button has been clicked, redisplay the blocks
+  const numberBlockElements = remainingNumbers.map(
+    (number: number): JSX.Element => (
+      <>
+        <label htmlFor={`${number}`}>{number}</label>
+        <input
+          id={`${number}`}
+          value={`${number}`}
+          name="block"
+          onClick={() =>
+            setRemainingNumbers(removeNumber(number, remainingNumbers))
+          }
+        />
+      </>
+    )
+  );
+  return <div>{numberBlockElements}</div>;
 }
