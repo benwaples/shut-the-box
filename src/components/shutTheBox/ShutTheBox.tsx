@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
+import { RemainingBlocksType } from '../../types';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
 import initialGame from './gameHelpers';
@@ -8,17 +9,25 @@ import initialGame from './gameHelpers';
 export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>([1, 1]);
   const [remainingBlocks, setRemainingBlocks] = useState(initialGame);
+  const [gameOver, setGameOver] = useState(false);
 
   function handleRestart() {
+    setGameOver(false);
     setDiceArray([1, 1]);
     setRemainingBlocks(initialGame);
   }
 
   // useEffect that rerenders when ever remainingBlocks is changed
-  useEffect(() => {
-    console.log(remainingBlocks);
-  }, [remainingBlocks]);
+  useEffect(() => {}, [remainingBlocks]);
   // check if playedBlocks adds to the sum of dice array
+  const playedBlocks = remainingBlocks.reduce(
+    (a: number, b: RemainingBlocksType): number => {
+      if (b.isPlayed) return a + b.number;
+      return a;
+    },
+    0
+  );
+  console.log(playedBlocks);
   //    if yes, let the player roll again
   //        let player roll again and check if the game is over then
   //        if game is over update state and display play again on the screen
@@ -49,9 +58,11 @@ export default function ShutTheBox(): JSX.Element {
           >
             Roll Dice
           </button>
-          <button type="button" onClick={handleRestart}>
-            Restart
-          </button>
+          {gameOver && (
+            <button type="button" onClick={handleRestart}>
+              Restart
+            </button>
+          )}
         </section>
       </main>
       <footer>github: benwaples</footer>
