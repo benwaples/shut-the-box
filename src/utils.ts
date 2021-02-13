@@ -1,10 +1,9 @@
 import { RemainingBlocksType } from './types';
 
-export function removeNumber(
-  n: number,
+export function removeBlocks(
   array: RemainingBlocksType[]
 ): RemainingBlocksType[] {
-  return array.filter(({ number }: RemainingBlocksType) => number !== n);
+  return array.filter(({ isPlayed }: RemainingBlocksType) => !isPlayed);
 }
 
 export function playBlock(
