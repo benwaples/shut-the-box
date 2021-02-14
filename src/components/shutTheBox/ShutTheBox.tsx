@@ -5,6 +5,8 @@ import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks } from '../../utils';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
+import RestartButton from '../reestartButton/RestartButton';
+import RollDice from '../rollDice/RollDice';
 import initialGame from './gameHelpers';
 
 export default function ShutTheBox(): JSX.Element {
@@ -19,9 +21,7 @@ export default function ShutTheBox(): JSX.Element {
     setRemainingBlocks(initialGame);
   }
 
-  // useEffect that rerenders when ever remainingBlocks is changed
   useEffect(() => {}, [remainingBlocks]);
-  // check if playedBlocks adds to the sum of dice array
   const playedBlocks = remainingBlocks.reduce(
     (a: number, b: RemainingBlocksType): number => {
       if (b.isPlayed) return a + b.number;
@@ -35,23 +35,20 @@ export default function ShutTheBox(): JSX.Element {
     setRemainingBlocks(removeBlocks(remainingBlocks));
     setRollDice(true);
   }
+  // const gameIsOver = isGameOver(
+  //   remainingBlocks.map((b) => b.number),
+  //   diceSum
+  // );
 
-  //    if yes, cut out those numbers from teh remainingBlocks array
+  // to do
+  /*
+  1. make roll dice button and pass it the correct props
+      run start and see if current changes will work then ACP
+  2. work on end game logic
+  3. check to see if a play is valid
+  4. make a played-block and default block class
+  */
 
-  //        let player roll again via terinary in JSX
-  //        and check if the game is over then
-
-  const gameIsOver = isGameOver(
-    remainingBlocks.map((b) => b.number),
-    diceSum
-  );
-
-  console.log(gameIsOver, 'gameIsOver');
-  //    if played block is over dice amount say invalid play
-  //        then update Remaining blocks and change that last block to false
-  //        if game is over update state and display play again on the screen
-  //    if no, the player needs to put another block down;
-  // console.log(remainingBlocks);
   return (
     <>
       <header>
@@ -66,25 +63,8 @@ export default function ShutTheBox(): JSX.Element {
           <h3>
             {diceArray[0]}, {diceArray[1]}
           </h3>
-          {rollDice && (
-            <button
-              onClick={() => {
-                setRollDice(false);
-                setDiceArray([
-                  Math.ceil(Math.random() * 6),
-                  Math.ceil(Math.random() * 6),
-                ]);
-              }}
-              type="button"
-            >
-              Roll Dice
-            </button>
-          )}
-          {gameOver && (
-            <button type="button" onClick={handleRestart}>
-              Restart
-            </button>
-          )}
+          {rollDice && <RollDice {...{ setRollDice, setDiceArray }} />}
+          {gameOver && <RestartButton {...{ handleRestart }} />}
         </section>
       </main>
       <footer>github: benwaples</footer>
