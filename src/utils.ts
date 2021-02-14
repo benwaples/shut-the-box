@@ -1,20 +1,24 @@
 import { RemainingBlocksType } from './types';
 
-export function removeNumber(
-  n: number,
+export function removeBlocks(
   array: RemainingBlocksType[]
 ): RemainingBlocksType[] {
-  return array.filter(({ number }: RemainingBlocksType) => number !== n);
+  return array.filter(({ isPlayed }: RemainingBlocksType) => !isPlayed);
 }
 
-export function playBlock(blockList: RemainingBlocksType[], n: number): void {
-  const block = blockList.find(
+export function playBlock(
+  blockList: RemainingBlocksType[],
+  n: number
+): RemainingBlocksType[] {
+  const copyArray = blockList.slice();
+  const block = copyArray.find(
     ({ number }: RemainingBlocksType) => number === n
   );
   // if block exists then toggle it to true.. this is more for TS lol
   if (block) {
     block.isPlayed = true;
   }
+  return copyArray;
 }
 
 export function isGameOver(
