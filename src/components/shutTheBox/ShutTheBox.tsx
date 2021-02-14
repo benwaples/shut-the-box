@@ -57,8 +57,8 @@ export default function ShutTheBox(): JSX.Element {
 
   // to do
   /*
-  2. work on end game logic => run it after dice are rolled
-  4. make a played-block and default block class
+  1. work on end game logic => run it after dice are rolled
+  2. disable the buttons when the roll dice is true
   */
 
   return (
@@ -69,7 +69,9 @@ export default function ShutTheBox(): JSX.Element {
       <main>
         <section>
           <h1>game Board</h1>
-          <DisplayNumbers {...{ remainingBlocks, setRemainingBlocks }} />
+          <DisplayNumbers
+            {...{ remainingBlocks, setRemainingBlocks, rollDice }}
+          />
         </section>
         <section>
           <h3>
