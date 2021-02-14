@@ -1,6 +1,7 @@
 import React from 'react';
 import { RemainingBlocksType } from '../../types';
 import { playBlock } from '../../utils';
+import './DisplayNumbers.scss';
 
 export default function DisplayNumbers({
   remainingBlocks,
