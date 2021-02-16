@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks } from '../../utils';
+import DisplayDice from '../displayDice/DisplayDice';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
 import RestartButton from '../restartButton/RestartButton';
@@ -65,8 +66,8 @@ export default function ShutTheBox(): JSX.Element {
 
   // to do
   /*
-  1. work on end game logic => run it after dice are rolled
-  2. disable the buttons when the roll dice is true
+  1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
+  2. allow user to unclick a block if the block is in play
   */
 
   return (
@@ -83,7 +84,7 @@ export default function ShutTheBox(): JSX.Element {
         </section>
         <section>
           <h3>
-            {diceArray[0]}, {diceArray[1]}
+            <DisplayDice {...{ diceArray }} />
           </h3>
           {rollDice && <RollDice {...{ setRollDice, setDiceArray }} />}
           {gameOver && <RestartButton {...{ handleRestart }} />}
