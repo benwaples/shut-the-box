@@ -35,8 +35,17 @@
   align-self: flex-end;
 }
 
-.second-face .dot:nth-of-type(2) {
-  align-self: center;
+.face-3 {
+  display: flex;
+  justify-content: space-between;
+
+  .dot:nth-of-type(2) {
+    align-self: center;
+  }
+
+  .dot:nth-of-type(3) {
+    align-self: flex-end;
+  }
 }
 
 .face-4 {
