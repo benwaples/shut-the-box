@@ -1,4 +1,5 @@
 import React from 'react';
+import './RollDice.scss';
 
 interface RollDicePropTypes {
   setRollDice: (tF: boolean) => void;
