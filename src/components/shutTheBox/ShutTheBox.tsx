@@ -50,9 +50,12 @@ export default function ShutTheBox(): JSX.Element {
       remainingBlocks.map((b) => b.number),
       diceSum
     );
-    console.log(diceSum);
+    console.log(
+      remainingBlocks.map((b) => b.number),
+      diceSum
+    );
 
-    console.log(gameIsOver);
+    console.log('is the game over?', gameIsOver);
   }, [diceArray]);
 
   if (diceSum === playedBlocks) {
