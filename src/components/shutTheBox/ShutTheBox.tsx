@@ -9,6 +9,7 @@ import DisplayNumbers from '../displayNumber/DisplayNumbers';
 import RestartButton from '../restartButton/RestartButton';
 import RollDice from '../rollDice/RollDice';
 import initialGame from './gameHelpers';
+import './ShutTheBox.scss';
 
 export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>([1, 1]);
@@ -44,16 +45,20 @@ export default function ShutTheBox(): JSX.Element {
     }
   }, [remainingBlocks]);
 
+  useEffect(() => {
+    const gameIsOver = isGameOver(
+      remainingBlocks.map((b) => b.number),
+      diceSum
+    );
+    console.log(diceSum);
+
+    console.log(gameIsOver);
+  }, [diceArray]);
+
   if (diceSum === playedBlocks) {
     setRemainingBlocks(removeBlocks(remainingBlocks));
     setRollDice(true);
   }
-  const gameIsOver = isGameOver(
-    remainingBlocks.map((b) => b.number),
-    diceSum
-  );
-
-  console.log(gameIsOver);
 
   // to do
   /*
