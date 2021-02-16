@@ -28,5 +28,5 @@ export default function DisplayNumbers({
     )
   );
 
-  return <div>{blockElements}</div>;
+  return <div id="block-display">{blockElements}</div>;
 }
