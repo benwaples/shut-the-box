@@ -12,4 +12,43 @@
   height: 24px;
   border-radius: 50%;
   background-color:white;
-  }
+}
+
+.face-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.face-2 {
+  display: flex;
+   
+  justify-content : space-between;
+}
+
+.face-2 .dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+
+.second-face .dot:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.second-face .dot:nth-of-type(2) {
+  align-self: center;
+}
+
+.face-4 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.face-6 {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 33% 33% 33%;
+
+  justify-items: center;
+  align-items: center;
+}

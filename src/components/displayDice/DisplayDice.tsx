@@ -12,9 +12,8 @@ export default function DisplayDice({
     return (
       <div className={`dice face-${dice}`}>
         {[...Array(dice)].map(() => (
-          <span className="dot">4</span>
+          <span className="dot" />
         ))}
-        {dice}
       </div>
     );
   });
