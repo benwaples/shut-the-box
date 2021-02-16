@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
@@ -5,9 +6,10 @@ import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks } from '../../utils';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
-import RestartButton from '../reestartButton/RestartButton';
+import RestartButton from '../restartButton/RestartButton';
 import RollDice from '../rollDice/RollDice';
 import initialGame from './gameHelpers';
+import './ShutTheBox.scss';
 
 export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>([1, 1]);
@@ -21,7 +23,6 @@ export default function ShutTheBox(): JSX.Element {
     setRemainingBlocks(initialGame);
   }
 
-  useEffect(() => {}, [remainingBlocks]);
   const playedBlocks = remainingBlocks.reduce(
     (a: number, b: RemainingBlocksType): number => {
       if (b.isPlayed) return a + b.number;
@@ -31,22 +32,38 @@ export default function ShutTheBox(): JSX.Element {
   );
   const diceSum = diceArray[0] + diceArray[1];
 
+  useEffect(() => {
+    if (playedBlocks > diceSum) {
+      alert('invalid play');
+
+      setRemainingBlocks(
+        remainingBlocks.map((block: RemainingBlocksType) => ({
+          ...block,
+          isPlayed: false,
+        }))
+      );
+    }
+  }, [remainingBlocks]);
+
+  useEffect(() => {
+    const gameIsOver = isGameOver(
+      remainingBlocks.map((b) => b.number),
+      diceSum
+    );
+    console.log(diceSum);
+
+    console.log(gameIsOver);
+  }, [diceArray]);
+
   if (diceSum === playedBlocks) {
     setRemainingBlocks(removeBlocks(remainingBlocks));
     setRollDice(true);
   }
-  // const gameIsOver = isGameOver(
-  //   remainingBlocks.map((b) => b.number),
-  //   diceSum
-  // );
 
   // to do
   /*
-  1. make roll dice button and pass it the correct props
-      run start and see if current changes will work then ACP
-  2. work on end game logic
-  3. check to see if a play is valid
-  4. make a played-block and default block class
+  1. work on end game logic => run it after dice are rolled
+  2. disable the buttons when the roll dice is true
   */
 
   return (
@@ -57,7 +74,9 @@ export default function ShutTheBox(): JSX.Element {
       <main>
         <section>
           <h1>game Board</h1>
-          <DisplayNumbers {...{ remainingBlocks, setRemainingBlocks }} />
+          <DisplayNumbers
+            {...{ remainingBlocks, setRemainingBlocks, rollDice }}
+          />
         </section>
         <section>
           <h3>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './RestartButton.scss';
 
 export default function RestartButton({
   handleRestart,
