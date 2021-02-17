@@ -15,6 +15,10 @@ div {
   button:disabled {
     background-color: grey;
   }
+
+  button:focus {
+    outline: orange;
+  }
 }
 
 #block-display {

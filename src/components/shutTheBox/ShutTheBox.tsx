@@ -9,6 +9,7 @@ import DisplayDice from '../displayDice/DisplayDice';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
 import RestartButton from '../restartButton/RestartButton';
 import RollDice from '../rollDice/RollDice';
+import YouWin from '../youWin/YouWin';
 import initialGame from './gameHelpers';
 import './ShutTheBox.scss';
 
@@ -68,6 +69,9 @@ export default function ShutTheBox(): JSX.Element {
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
   2. allow user to unclick a block if the block is in play
+  3. if user wins the game display gif and restart button
+    -- logic is below, add gif and display restart button
+  4. dice animation
   */
 
   return (
@@ -81,6 +85,7 @@ export default function ShutTheBox(): JSX.Element {
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
           />
+          {!remainingBlocks.length && <YouWin />}
         </section>
         <section>
           <h3>
