@@ -44,9 +44,14 @@ export function isGameOver(
     return false;
   }
 
+  if (s >= target) {
+    return false; // if we reach the number why bother to continue
+  }
+
   for (let i = 0; i < numbers.length; i += 1) {
     n = numbers[i];
-    remaining = numbers.slice(i + 1);
+    remaining = numbers.slice();
+    numbers.slice(i + 1);
     isGameOver(remaining, target, partial.concat([n]));
   }
 
