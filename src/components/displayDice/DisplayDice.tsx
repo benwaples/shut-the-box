@@ -17,5 +17,5 @@ export default function DisplayDice({
       </div>
     );
   });
-  return <>{displayDice}</>;
+  return <div id="dice-container">{displayDice}</div>;
 }

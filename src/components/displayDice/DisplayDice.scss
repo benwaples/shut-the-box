@@ -1,9 +1,18 @@
+#dice-container {
+  margin: auto;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+
+}
+
 .dice {
   padding: 4px;  
   background-color: tomato;  
   width: 104px;  
   height: 104px;  
   border-radius: 10%;
+  margin: 15px;
 }
 
 .dot {
@@ -63,4 +72,19 @@
 
   justify-items: center;
   align-items: center;
+}
+
+.face-5 {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+
+  justify-items: center;
+  align-items: center;
+
+  .dot:nth-of-type(5) {
+    display: grid;
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+  }
 }
