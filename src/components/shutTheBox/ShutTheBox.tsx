@@ -68,8 +68,7 @@ export default function ShutTheBox(): JSX.Element {
   // to do
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
-  2. allow user to unclick a block if the block is in play
-  3. if user wins the game display gif and restart button
+  3. if user wins the game display gif and res  tart button
     -- logic is below, add gif and display restart button
   4. dice animation
   */
