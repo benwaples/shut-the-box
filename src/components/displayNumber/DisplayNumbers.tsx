@@ -1,6 +1,6 @@
 import React from 'react';
 import { RemainingBlocksType } from '../../types';
-import { playBlock } from '../../utils';
+import { playBlock, unPlayBlock } from '../../utils';
 import './DisplayNumbers.scss';
 
 export default function DisplayNumbers({
@@ -14,12 +14,20 @@ export default function DisplayNumbers({
 }): JSX.Element {
   // map over remainingBlocks and make block elements :)
 
+  function blockPlay(isPlayed: boolean, number: number) {
+    if (isPlayed) {
+      setRemainingBlocks(unPlayBlock(remainingBlocks, number));
+    } else {
+      setRemainingBlocks(playBlock(remainingBlocks, number));
+    }
+  }
+
   const blockElements = remainingBlocks.map(
     ({ number, isPlayed }: RemainingBlocksType) => (
       <div key={number} className={isPlayed ? 'played-block' : 'default'}>
         <button
           disabled={rollDice}
-          onClick={() => setRemainingBlocks(playBlock(remainingBlocks, number))}
+          onClick={() => blockPlay(isPlayed, number)}
           type="button"
         >
           {number}
