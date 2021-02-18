@@ -21,6 +21,22 @@ export function playBlock(
   return copyArray;
 }
 
+export function unPlayBlock(
+  blockList: RemainingBlocksType[],
+  n: number
+): RemainingBlocksType[] {
+  const copyArray = blockList.slice();
+  const block = copyArray.find(
+    ({ number }: RemainingBlocksType) => number === n
+  );
+
+  if (block) {
+    block.isPlayed = false;
+  }
+
+  return copyArray;
+}
+
 export function isGameOver(
   numbers: number[],
   target: number,
