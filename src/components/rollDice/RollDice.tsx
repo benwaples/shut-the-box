@@ -1,4 +1,5 @@
 import React from 'react';
+import { twoRandomDice } from '../../utils';
 import './RollDice.scss';
 
 interface RollDicePropTypes {
@@ -14,10 +15,7 @@ export default function RollDice({
     <button
       onClick={() => {
         setRollDice(false);
-        setDiceArray([
-          Math.ceil(Math.random() * 6),
-          Math.ceil(Math.random() * 6),
-        ]);
+        setDiceArray(twoRandomDice());
       }}
       type="button"
     >

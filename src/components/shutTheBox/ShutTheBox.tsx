@@ -71,6 +71,8 @@ export default function ShutTheBox(): JSX.Element {
   2. dice animation
   3. block animation
   4. random dice on load
+  5. test functions
+  6. interfaces for all components types
   */
 
   return (
@@ -84,7 +86,7 @@ export default function ShutTheBox(): JSX.Element {
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
           />
-          {remainingBlocks.length && <YouWin {...{ handleRestart }} />}
+          {!remainingBlocks.length && <YouWin {...{ handleRestart }} />}
         </section>
         <section>
           <h3>
