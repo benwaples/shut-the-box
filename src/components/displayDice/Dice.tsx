@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function Die({
-  diceArray,
-}: {
+interface DieTypes {
   diceArray: number[];
-}): JSX.Element {
+}
+
+export default function Die({ diceArray }: DieTypes): JSX.Element {
   const displayDice = diceArray.map((dice: number) => {
     return (
       <div className={`dice face-${dice}`}>
@@ -15,5 +15,5 @@ export default function Die({
     );
   });
 
-  return displayDice;
+  return <>{displayDice}</>;
 }

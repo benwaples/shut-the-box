@@ -72,6 +72,7 @@ export default function ShutTheBox(): JSX.Element {
   3. block animation
   4. random dice on load
   5. test functions
+  6. interfaces for all components types
   */
 
   return (
