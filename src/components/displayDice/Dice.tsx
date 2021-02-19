@@ -4,7 +4,7 @@ interface DieTypes {
   diceArray: number[];
 }
 
-export default function Die({ diceArray }: DieTypes): JSX.Element {
+export default function Dice({ diceArray }: DieTypes): JSX.Element {
   const displayDice = diceArray.map((dice: number) => {
     return (
       <div className={`dice face-${dice}`}>
