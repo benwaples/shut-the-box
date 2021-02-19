@@ -86,7 +86,7 @@ export default function ShutTheBox(): JSX.Element {
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
           />
-          {remainingBlocks.length && <YouWin {...{ handleRestart }} />}
+          {!remainingBlocks.length && <YouWin {...{ handleRestart }} />}
         </section>
         <section>
           <h3>

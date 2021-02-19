@@ -1,4 +1,5 @@
 import React from 'react';
+import './DisplayDice.scss';
 
 interface DieTypes {
   diceArray: number[];

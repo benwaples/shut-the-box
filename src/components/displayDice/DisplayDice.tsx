@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { twoRandomDice } from '../../utils';
 import Dice from './Dice';
-import './DisplayDice.scss';
 
 export default function DisplayDice({
   diceArray,
@@ -23,12 +22,12 @@ export default function DisplayDice({
   }, []);
 
   return (
-    <>
+    <div id="dice-container">
       {animatedDice.length === 2 ? (
         <Dice {...{ diceArray: animatedDice }} />
       ) : (
         <Dice {...{ diceArray }} />
       )}
-    </>
+    </div>
   );
 }
