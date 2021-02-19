@@ -68,11 +68,11 @@ export default function ShutTheBox(): JSX.Element {
   // to do
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
-  3. block animation
-  4. random dice on load
-  5. test functions
-  6. interfaces for all components types
-  7. deploy on netlify
+  2. block animation
+  3. test functions
+  4. interfaces for all components types
+  5. restart button until game logic works
+    styled
   */
 
   return (
@@ -81,8 +81,7 @@ export default function ShutTheBox(): JSX.Element {
         <h1>Shut The Box</h1>
       </header>
       <main>
-        <section>
-          <h1>game Board</h1>
+        <section id="game-board">
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
           />
@@ -95,6 +94,7 @@ export default function ShutTheBox(): JSX.Element {
           {rollDice && <RollDice {...{ setRollDice, setDiceArray }} />}
           {gameOver && <RestartButton {...{ handleRestart }} />}
         </section>
+        <RestartButton {...{ handleRestart }} />
       </main>
       <footer>github: benwaples</footer>
     </>

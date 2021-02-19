@@ -1,0 +1,22 @@
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+
+  #restart-button {
+    align-self: flex-end;
+    margin-right: 20px;
+
+    background-color: pink;
+   
+  }
+
+  #game-board {
+    width: 75%;
+  }
+
+}
+
+

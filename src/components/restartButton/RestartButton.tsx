@@ -7,7 +7,7 @@ export default function RestartButton({
   handleRestart: () => void;
 }): JSX.Element {
   return (
-    <button type="button" onClick={handleRestart}>
+    <button id="restart-button" type="button" onClick={handleRestart}>
       Restart
     </button>
   );
