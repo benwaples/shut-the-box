@@ -11,12 +11,7 @@ export default function DisplayDice({
   diceArray: number[];
 }): JSX.Element {
   const [animatedDice, setAnimatedDice] = useState<number[]>(twoRandomDice());
-  // animation
-  /*
-  1. state for animatedDice
-  2. make interval to update animatedDice
-  3. kill interval after X time and display diceArray
-  */
+
   useEffect(() => {
     const diceInterval = setInterval(() => {
       setAnimatedDice(twoRandomDice());
