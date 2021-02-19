@@ -8,6 +8,12 @@ export default function DisplayDice({
 }: {
   diceArray: number[];
 }): JSX.Element {
+  // animation
+  /*
+  1. state for animatedDice
+  2. make interval to update animatedDice
+  3. kill interval after X time and display diceArray
+  */
   const displayDice = diceArray.map((dice: number) => {
     return (
       <div className={`dice face-${dice}`}>
