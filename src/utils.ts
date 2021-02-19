@@ -73,3 +73,7 @@ export function isGameOver(
 
   return true;
 }
+
+export function twoRandomDice(): number[] {
+  return [Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6)];
+}
