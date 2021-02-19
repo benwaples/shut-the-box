@@ -14,12 +14,12 @@ export default function DisplayDice({
   useEffect(() => {
     const diceInterval = setInterval(() => {
       setAnimatedDice(twoRandomDice());
-    }, 100);
+    }, 200);
     setTimeout(() => {
       clearInterval(diceInterval);
       setAnimatedDice([1, 1, 1]);
-    }, 1000);
-  }, []);
+    }, 1400);
+  }, [diceArray]);
 
   return (
     <div id="dice-container">
