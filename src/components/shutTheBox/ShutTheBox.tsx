@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { RemainingBlocksType } from '../../types';
-import { isGameOver, removeBlocks } from '../../utils';
+import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
 import DisplayDice from '../displayDice/DisplayDice';
 // import { isGameOver } from '../../utils';
 import DisplayNumbers from '../displayNumber/DisplayNumbers';
@@ -14,14 +14,14 @@ import initialGame from './gameHelpers';
 import './ShutTheBox.scss';
 
 export default function ShutTheBox(): JSX.Element {
-  const [diceArray, setDiceArray] = useState<number[]>([1, 1]);
+  const [diceArray, setDiceArray] = useState<number[]>(twoRandomDice());
   const [remainingBlocks, setRemainingBlocks] = useState(initialGame);
   const [gameOver, setGameOver] = useState(false);
   const [rollDice, setRollDice] = useState(false);
 
   function handleRestart() {
     setGameOver(false);
-    setDiceArray([1, 1]);
+    setDiceArray(twoRandomDice());
     setRemainingBlocks(initialGame);
   }
 
@@ -68,11 +68,11 @@ export default function ShutTheBox(): JSX.Element {
   // to do
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
-  2. dice animation
   3. block animation
   4. random dice on load
   5. test functions
   6. interfaces for all components types
+  7. deploy on netlify
   */
 
   return (
