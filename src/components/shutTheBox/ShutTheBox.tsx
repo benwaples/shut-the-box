@@ -19,12 +19,6 @@ export default function ShutTheBox(): JSX.Element {
   const [gameOver, setGameOver] = useState(false);
   const [rollDice, setRollDice] = useState(false);
 
-  function handleRestart() {
-    setGameOver(false);
-    setDiceArray(twoRandomDice());
-    setRemainingBlocks(initialGame);
-  }
-
   const playedBlocks = remainingBlocks.reduce(
     (a: number, b: RemainingBlocksType): number => {
       if (b.isPlayed) return a + b.number;
@@ -34,6 +28,16 @@ export default function ShutTheBox(): JSX.Element {
   );
   const diceSum = diceArray[0] + diceArray[1];
 
+  function handleRestart() {
+    setRemainingBlocks(
+      initialGame.map((block: RemainingBlocksType) => ({
+        ...block,
+        isPlayed: false,
+      }))
+    );
+    setDiceArray(twoRandomDice());
+    setGameOver(false);
+  }
   useEffect(() => {
     if (playedBlocks > diceSum) {
       alert('invalid play');
@@ -71,8 +75,7 @@ export default function ShutTheBox(): JSX.Element {
   2. block animation
   3. test functions
   4. interfaces for all components types
-  5. restart button until game logic works
-    styled
+  5. replace the alert with something nicer, like a toast notification
   */
 
   return (
