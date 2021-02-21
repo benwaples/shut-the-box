@@ -1,0 +1,52 @@
+body {
+  font-family: monospace;
+  background-color: #f1faee;
+
+}
+
+header {
+  background-color: #457b9d;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  h1 {
+    margin: auto;
+  }
+
+  margin: 0 0 20px 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+
+  #restart-button {
+    align-self: flex-end;
+    margin-right: 20px;
+
+    background-color: pink;
+    border: none;
+    height: 40px;
+
+    border-radius: 0 15px 0 15px;
+    background-color: #e63946;
+  }
+
+  #game-board {
+    width: 75%;
+  }
+
+}
+
+footer {
+  position: absolute;
+  left: 0;
+}
+
+button {
+  font-family: monospace;
+}

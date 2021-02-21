@@ -8,9 +8,9 @@ interface DieTypes {
 export default function Dice({ diceArray }: DieTypes): JSX.Element {
   const displayDice = diceArray.map((dice: number) => {
     return (
-      <div className={`dice face-${dice}`}>
+      <div className={`dice face-${dice}`} key={Math.random()}>
         {[...Array(dice)].map(() => (
-          <span className="dot" />
+          <span className="dot" key={Math.random()} />
         ))}
       </div>
     );
