@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
 import DisplayDice from '../displayDice/DisplayDice';
@@ -27,6 +28,16 @@ export default function ShutTheBox(): JSX.Element {
     0
   );
   const diceSum = diceArray[0] + diceArray[1];
+  const invalidPlayToast = () =>
+    toast('Invalid PLay', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   function handleRestart() {
     setRemainingBlocks(
@@ -40,8 +51,7 @@ export default function ShutTheBox(): JSX.Element {
   }
   useEffect(() => {
     if (playedBlocks > diceSum) {
-      alert('invalid play');
-
+      invalidPlayToast();
       setRemainingBlocks(
         remainingBlocks.map((block: RemainingBlocksType) => ({
           ...block,
@@ -53,10 +63,6 @@ export default function ShutTheBox(): JSX.Element {
 
   useEffect(() => {
     const gameIsOver = isGameOver(
-      remainingBlocks.map((b) => b.number),
-      diceSum
-    );
-    console.log(
       remainingBlocks.map((b) => b.number),
       diceSum
     );
@@ -76,6 +82,7 @@ export default function ShutTheBox(): JSX.Element {
   3. test functions
   4. interfaces for all components types
   5. replace the alert with something nicer, like a toast notification
+  6. change color of played blocks
   */
 
   return (
@@ -84,6 +91,7 @@ export default function ShutTheBox(): JSX.Element {
         <h1>Shut The Box</h1>
       </header>
       <main>
+        <ToastContainer autoClose={5000} />
         <section id="game-board">
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
