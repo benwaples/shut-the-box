@@ -3,6 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
 import DisplayDice from '../displayDice/DisplayDice';
@@ -90,8 +91,8 @@ export default function ShutTheBox(): JSX.Element {
       <header>
         <h1>Shut The Box</h1>
       </header>
+      <ToastContainer autoClose={5000} />
       <main>
-        <ToastContainer autoClose={5000} />
         <section id="game-board">
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
