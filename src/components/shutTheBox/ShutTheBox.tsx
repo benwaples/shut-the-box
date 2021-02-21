@@ -32,7 +32,7 @@ export default function ShutTheBox(): JSX.Element {
   const invalidPlayToast = () =>
     toast('Invalid PLay', {
       position: 'top-right',
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -82,7 +82,7 @@ export default function ShutTheBox(): JSX.Element {
   2. block animation
   3. test functions
   4. interfaces for all components types
-  5. replace the alert with something nicer, like a toast notification
+  5. refactor toast function and export into utils
   6. change color of played blocks
   */
 
@@ -91,7 +91,7 @@ export default function ShutTheBox(): JSX.Element {
       <header>
         <h1>Shut The Box</h1>
       </header>
-      <ToastContainer autoClose={5000} />
+      <ToastContainer />
       <main>
         <section id="game-board">
           <DisplayNumbers
