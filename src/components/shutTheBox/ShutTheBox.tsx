@@ -19,7 +19,7 @@ export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>(twoRandomDice());
   const [remainingBlocks, setRemainingBlocks] = useState(initialGame);
   const [gameOver, setGameOver] = useState(false);
-  const [rollDice, setRollDice] = useState(false);
+  const [rollDice, setRollDice] = useState(true);
 
   const playedBlocks = remainingBlocks.reduce(
     (a: number, b: RemainingBlocksType): number => {
@@ -83,7 +83,7 @@ export default function ShutTheBox(): JSX.Element {
   3. test functions
   4. interfaces for all components types
   5. refactor toast function and export into utils
-  6. change color of played blocks
+  6. user rolls when the page loads
   */
 
   return (
@@ -100,10 +100,11 @@ export default function ShutTheBox(): JSX.Element {
           {!remainingBlocks.length && <YouWin {...{ handleRestart }} />}
         </section>
         <section>
-          <h3>
+          {rollDice ? (
+            <RollDice {...{ setRollDice, setDiceArray }} />
+          ) : (
             <DisplayDice {...{ diceArray }} />
-          </h3>
-          {rollDice && <RollDice {...{ setRollDice, setDiceArray }} />}
+          )}
           {gameOver && <RestartButton {...{ handleRestart }} />}
         </section>
         <RestartButton {...{ handleRestart }} />
