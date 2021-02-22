@@ -50,3 +50,11 @@ footer {
 button {
   font-family: monospace;
 }
+
+.dice-handler {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 200px
+}

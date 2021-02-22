@@ -99,7 +99,7 @@ export default function ShutTheBox(): JSX.Element {
           />
           {!remainingBlocks.length && <YouWin {...{ handleRestart }} />}
         </section>
-        <section>
+        <section className="dice-handler">
           {rollDice ? (
             <RollDice {...{ setRollDice, setDiceArray }} />
           ) : (
