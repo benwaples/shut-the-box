@@ -83,7 +83,7 @@ export default function ShutTheBox(): JSX.Element {
   3. test functions
   4. interfaces for all components types
   5. refactor toast function and export into utils
-  6. user rolls when the page loads
+  6. mobile friendly 
   */
 
   return (

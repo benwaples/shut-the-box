@@ -2,11 +2,13 @@ import React from 'react';
 import winGifs from './assets';
 import './YouWin.scss';
 
+export interface YouWinPropTypes {
+  handleRestart: () => void;
+}
+
 export default function YouWin({
   handleRestart,
-}: {
-  handleRestart: () => void;
-}): JSX.Element {
+}: YouWinPropTypes): JSX.Element {
   const randomIndex = Math.floor(Math.random() * winGifs.length);
   const winningSrc = winGifs[randomIndex];
   return (
