@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { twoRandomDice } from '../../utils';
 import Dice from './Dice';
 
+export interface DisplayDicePropTypes {
+  diceArray: number[];
+}
+
 export default function DisplayDice({
   diceArray,
-}: {
-  diceArray: number[];
-}): JSX.Element {
+}: DisplayDicePropTypes): JSX.Element {
   const [animatedDice, setAnimatedDice] = useState<number[]>(twoRandomDice());
 
   useEffect(() => {
