@@ -22,9 +22,10 @@ describe('util functions', () => {
         isPlayed: true,
       },
     ];
-    const expected = exampleData.slice();
+
+    const expected = exampleData.slice().splice(0, 3);
     const actual = removeBlocks(exampleData);
-    expected.pop();
+
     expect(actual).toEqual(expected);
   });
 });
