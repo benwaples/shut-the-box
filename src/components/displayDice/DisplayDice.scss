@@ -106,3 +106,15 @@
     grid-row: 3 / 4;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .dice {
+    height: 50px;
+    width: 50px;
+  }
+
+  .dot {
+    height: 12px;
+    width: 12px;
+  }
+}
