@@ -58,3 +58,9 @@ div {
     border-radius: 5px;
   }
 }
+
+@media only screen and (max-width: 1040px) {
+  #block-display {
+    justify-content: flex-start;
+  }
+}
