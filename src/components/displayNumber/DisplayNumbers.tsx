@@ -24,7 +24,10 @@ export default function DisplayNumbers({
 
   const blockElements = remainingBlocks.map(
     ({ number, isPlayed }: RemainingBlocksType) => (
-      <div key={number} className={isPlayed ? 'played-block' : 'default'}>
+      <div
+        key={number}
+        className={isPlayed ? 'played-block block' : 'default block'}
+      >
         <button
           disabled={rollDice}
           onClick={() => blockPlay(isPlayed, number)}
