@@ -1,4 +1,4 @@
-import { playBlock, removeBlocks } from '../utils';
+import { playBlock, removeBlocks, unPlayBlock } from '../utils';
 
 const exampleData = [
   {
@@ -27,16 +27,21 @@ describe('util functions', () => {
   });
 
   it('playBlocks(blockList, number)', () => {
-    const expected = exampleData.slice();
-    // make all blocks unplayed
-    expected[3].isPlayed = false;
-    console.log(expected);
+    const exampleDataCopy = exampleData.slice();
+    const expected = true;
 
     // make block 4 played
-    const actual = playBlock(exampleData, 3);
+    const actual = playBlock(exampleDataCopy, 2);
 
-    console.log(actual);
+    expect(actual[1].isPlayed).toEqual(expected);
+  });
 
-    expect(actual).toEqual(exampleData);
+  it('unPlayBlock(blockList, n)', () => {
+    const exampleDataCopy = exampleData.slice();
+    const expected = false;
+
+    const actual = unPlayBlock(exampleDataCopy, 4);
+
+    expect(actual[3].isPlayed).toEqual(expected);
   });
 });

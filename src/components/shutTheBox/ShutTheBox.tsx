@@ -80,9 +80,6 @@ export default function ShutTheBox(): JSX.Element {
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
   2. block animation
-  3. test functions
-      - playedBlock test is not accurate
-  4. interfaces for all components types
   5. refactor toast function and export into utils
   6. mobile friendly 
   */

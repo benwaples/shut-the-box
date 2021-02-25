@@ -22,10 +22,16 @@ div {
   }
 }
 
+.block {
+  margin: 20px;
+}
+
 #block-display {
+  margin: auto;
   display:  flex;
   justify-content: space-evenly;
   align-items: center;
+  width: fit-content;
 
   button {
     border: none;
