@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 
-export function invalidPlayToast() {
+export function invalidPlayToast(): void {
   toast('Invalid Play', {
     position: 'top-right',
     autoClose: 3000,
@@ -12,7 +12,7 @@ export function invalidPlayToast() {
   });
 }
 
-export function playedBlocksToast(playedNumbers: number[]) {
+export function playedBlocksToast(playedNumbers: number[]): void {
   const customMessage = `you just played ${playedNumbers}`;
   toast(customMessage, {
     position: 'top-right',
