@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { invalidPlayToast, playedBlocksToast } from './toastUtil';
 import 'react-toastify/dist/ReactToastify.css';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
@@ -29,16 +30,6 @@ export default function ShutTheBox(): JSX.Element {
     0
   );
   const diceSum = diceArray[0] + diceArray[1];
-  const invalidPlayToast = () =>
-    toast('Invalid PLay', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   function handleRestart() {
     setRemainingBlocks(
@@ -60,6 +51,20 @@ export default function ShutTheBox(): JSX.Element {
         }))
       );
     }
+
+    if (diceSum === playedBlocks) {
+      // get the blocks user is playing
+      const blocksPlayed = remainingBlocks.reduce(
+        (a: number[], b: RemainingBlocksType): number[] => {
+          if (b.isPlayed) a.push(b.number);
+          return a;
+        },
+        []
+      );
+      playedBlocksToast(blocksPlayed);
+      setRemainingBlocks(removeBlocks(remainingBlocks));
+      setRollDice(true);
+    }
   }, [remainingBlocks]);
 
   useEffect(() => {
@@ -71,16 +76,13 @@ export default function ShutTheBox(): JSX.Element {
     console.log('is the game over?', gameIsOver);
   }, [diceArray]);
 
-  if (diceSum === playedBlocks) {
-    setRemainingBlocks(removeBlocks(remainingBlocks));
-    setRollDice(true);
-  }
+  // run if the play is valid
 
   // to do
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
   2. block animation
-  5. refactor toast function and export into utils
+  5. refactor reset button out of this main file
   6. mobile friendly 
   */
 
