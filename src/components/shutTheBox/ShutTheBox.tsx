@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import invalidPlayToast from './toastUtil';
 import 'react-toastify/dist/ReactToastify.css';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
@@ -29,16 +30,6 @@ export default function ShutTheBox(): JSX.Element {
     0
   );
   const diceSum = diceArray[0] + diceArray[1];
-  const invalidPlayToast = () =>
-    toast('Invalid PLay', {
-      position: 'top-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
   function handleRestart() {
     setRemainingBlocks(
