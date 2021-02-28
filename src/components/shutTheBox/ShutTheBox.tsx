@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { invalidPlayToast, playedBlocksToast } from './toastUtil';
+import { invalidPlayToast, playedBlocksToast } from './gameUtils';
 import 'react-toastify/dist/ReactToastify.css';
 import { RemainingBlocksType } from '../../types';
 import { isGameOver, removeBlocks, twoRandomDice } from '../../utils';
@@ -41,6 +41,8 @@ export default function ShutTheBox(): JSX.Element {
     setDiceArray(twoRandomDice());
     setGameOver(false);
   }
+
+  // handleRestart(setRemainingBlocks, setDiceArray, setGameOver)
   useEffect(() => {
     if (playedBlocks > diceSum) {
       invalidPlayToast();
@@ -82,8 +84,6 @@ export default function ShutTheBox(): JSX.Element {
   /*
   1. work on end game logic => run it after dice are rolled - once it works, allow a user to reset a game
   2. block animation
-  5. refactor reset button out of this main file
-  6. mobile friendly 
   */
 
   return (
