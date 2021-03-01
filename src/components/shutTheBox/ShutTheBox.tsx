@@ -15,12 +15,14 @@ import RollDice from '../rollDice/RollDice';
 import YouWin from '../youWin/YouWin';
 import initialGame from './gameHelpers';
 import './ShutTheBox.scss';
+import Instructions from '../instructions/Instructions';
 
 export default function ShutTheBox(): JSX.Element {
   const [diceArray, setDiceArray] = useState<number[]>(twoRandomDice());
   const [remainingBlocks, setRemainingBlocks] = useState(initialGame);
   const [gameOver, setGameOver] = useState(false);
   const [rollDice, setRollDice] = useState(true);
+  const [displayInstructions, setDisplayInstructions] = useState(true);
 
   const playedBlocks = remainingBlocks.reduce(
     (a: number, b: RemainingBlocksType): number => {
@@ -93,6 +95,9 @@ export default function ShutTheBox(): JSX.Element {
       </header>
       <ToastContainer />
       <main>
+        {displayInstructions && (
+          <Instructions {...{ setDisplayInstructions, displayInstructions }} />
+        )}
         <section id="game-board">
           <DisplayNumbers
             {...{ remainingBlocks, setRemainingBlocks, rollDice }}
