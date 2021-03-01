@@ -1,4 +1,5 @@
 import React from 'react';
+import './Instructions.scss';
 
 interface Props {
   setDisplayInstructions: (b: boolean) => void;
@@ -13,7 +14,7 @@ function Instructions(props: Props): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="instructions-container">
       <p>Instructions</p>
       <p>1. roll dice</p>
       <p>2. add the dice up</p>
