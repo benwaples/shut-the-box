@@ -15,7 +15,7 @@ function Instructions(props: Props): JSX.Element {
 
   return (
     <div className="instructions-container">
-      <p>Instructions</p>
+      <h4>Instructions</h4>
       <p>1. roll dice</p>
       <p>2. add the dice up</p>
       <p>3. play the blocks that add up to the sum of the dice</p>
