@@ -13,7 +13,6 @@ export default function DisplayNumbers({
   rollDice: boolean;
 }): JSX.Element {
   // map over remainingBlocks and make block elements :)
-
   function blockPlay(isPlayed: boolean, number: number) {
     if (isPlayed) {
       setRemainingBlocks(unPlayBlock(remainingBlocks, number));
