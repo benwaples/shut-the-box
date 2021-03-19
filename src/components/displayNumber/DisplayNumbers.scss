@@ -39,11 +39,12 @@ div {
   button {
     border: none;
     cursor: pointer;
-    width: 50px;
+    width: fit-content;
     height: 100px;
     transition: ease-in-out .2s;
     border-radius: 15px;
     font-size: 4rem;
+    text-align: center;
   }
 
   button:hover {
